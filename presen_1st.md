@@ -10,6 +10,12 @@
 
 Webブラウザ上で動作することを目的として開発されたプログラミング言語。もともとはWebブラウザ上でのみ動くことを目的としていたが、他の様々な場面でも動作するように拡張されていった。
 
+---
+
+<img src="javascript-image.png" style="width:100%" />
+
+---
+
 ## 誕生
 
 それまでWebブラウザでは静的なHTMLしかレンダリングすることができなかったが、JavaScriptを導入することで動きのあるWebページを作れるようになった。
@@ -29,12 +35,10 @@ WebブラウザChromeに搭載されたJavaScriptエンジンをベースに、H
 ## Apache cordovaによるモバイル開発
 
 HTML、CSS、JavaScriptによりAndroid、iPhoneのクロスプラットフォーム開発が可能なApache cordovaが開発された。
-JavaScriptでモバイル開発が可能というだけでなく、１つのコードでAndroid、iPhoneのアプリが開発できるということでモバイルアプリケーション開発において、かなり有力な選択肢になった。
 
 ## SPA(Single Page Application)
 
 ページ遷移をせずに、JavaScriptの非同期通信でデータを受け取り、JavaScriptによりDOMを直接変更しレンダリングすることで、画面の表示を切り替える手法。
-通信でHTMLを受け取らなくすることによって通信量を減らし、画面遷移の"重さ"を解消する効果がある。
 
 ---
 
@@ -132,11 +136,18 @@ const express = require('express');
 
 モジュールシステムが追加されたことが最大の特徴。これにより、便利な部品がnpm moduleとして多数公開され、JavaScriptの開発環境を大きく変えていった。
 なお、ES6にもモジュールシステムがあるがES6では記法が少し異なる。
+
 公開されたモジュールを使用したい場合は、以下の1コマンドでインストールできる。
 ```shell
 # npm install express
 または
 # yarn add express
+```
+
+あるいは、unpkg.comというCDNサービスを使ってHTMLからモジュールを参照することができる。
+
+```html
+<script src="https://unpkg.com/express" />
 ```
 
 ---
@@ -211,6 +222,8 @@ webブラウザ上で表示の切り替え、画面遷移などのコーディ�
 * React (+ webpack + babel) or create-react-app
 * Vue.js (+ webpack + babel) or Nuxt.js
 
+---
+
 数年前にはMEANスタックなんて言葉も流行りました。
 
 * Mongodb
@@ -241,25 +254,23 @@ ReactはFacebookが公開したUI構築のためのJavaScriptライブラリ。�
 * システムを機能（何ができるのか）によって分離する設計技法
 * コンポーネントを使用する際にはインタフェースを経由する
 * 同一インタフェースのコンポーネントは置換可能
-→コンポーネントを使いたければ、インタフェースだけを知ればよい。
-　使う対象のコンポーネントのことを知る必要さえない。
- 　（それで想定通りに動くかどうかは別問題）
+* コンポーネントを使いたければインタフェースだけを知ればよい。使う対象のコンポーネントのことを知る必要さえない。（それで想定通りに動くかどうかは別問題）
   
-エアコンが冷房なのか暖房なのかがわからなくても、リモコンの電源ボタンを
-押すと動きます。
+エアコンが冷房なのか暖房なのかがわからなくても、リモコンの電源ボタンを押すと動きます。
+
 （コンポーネント：冷房・暖房、インタフェース：電源ボタン）
 
 ---
 
 ## Reactにおけるコンポーネント指向とは
 
-すべてのコンポーネントはpropsという入力インタフェースと、render()という
-出力（画面表示）のインタフェース（というかメソッド）を持つ。
+すべてのコンポーネントはpropsという入力インタフェースと、render()という出力（画面表示）のインタフェース（というかメソッド）を持つ。
+
 →インタフェースの統一
 
 1つのコンポーネントにHTMLの枠組み、スタイルの指定、onClickなどの
-アクションを包括することで、コンポーネントごとに見た目と動きからなる
-最小限の機能を持たせることができる。
+アクションを包括することで、コンポーネントごとに見た目と動きからなる最小限の機能を持たせることができる。
+
 →機能分離が可能
 
 ---
@@ -287,19 +298,63 @@ $("#test-text").on("blur", function(e){
 
 ---
 
-Reactなら1つのコンポーネントで足りる
+Reactなら1つのコンポーネントで足りる(以下はmaterialUIを活用した記述)
 
 ```jsx
-const testText = props => {
+const styles = makeStyle({
+  root: {
+    width: '100%'
+  }
+});
+const TestText = props => {
   const [text, setText] = useState("default text");
+  const classes = styles();
   const onBlur = (val) => {
     if(!checkValue(val)) {
       alert("ダメでーす");
       setText("");
     }
   }
-  return <input type="text" value={text} onBlur={(e) => onBlue(e.target.value)} />
+  return <input type="text" className={classes.root} value={text} onBlur={(e) => onBlur(e.target.value)} />;
 };
+```
+
+---
+
+## jsx記法
+
+Reactコンポーネントを返却するメソッドでは、returnステートメントにマークアップ記法を記述することができる。
+
+```jsx
+return <input type="text" className={classes.root} value={text} onBlur={(e) => onBlur(e.target.value)} />;
+```
+
+マークアップ記法の中で{}でくくると、その内部はJavascriptで解釈され実行結果がマークアップに取り込まれる。
+
+---
+
+## React Hello World!
+
+```html
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <section id="content" />
+</body>
+</html>
+```
+
+```jsx
+import { react } from 'react';
+import { reactDOM } from 'react-dom';
+
+const Component = props => {
+  return <div>Hello, World!</div>;
+};
+
+ReactDOM.render(<Component />, document.getElementById("content"))
 ```
 
 ---
