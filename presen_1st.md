@@ -1,4 +1,4 @@
-# JavaScript ~ React.js
+# JavaScript ~ React
 
 ---
 
@@ -193,7 +193,7 @@ webブラウザ上で表示の切り替え、画面遷移などのコーディ�
 代表的なフロントエンドライブラリ
 * jQuery
 * Angular.js
-* React.js
+* React
 * Vue.js
 
 [googleトレンド](https://trends.google.co.jp/trends/explore?geo=JP&q=jQuery,Angular,React,Vue)
@@ -208,7 +208,7 @@ webブラウザ上で表示の切り替え、画面遷移などのコーディ�
 * Node.js + Express (+ babel)
 
 フロントエンド
-* React.js (+ webpack + babel) or create-react-app
+* React (+ webpack + babel) or create-react-app
 * Vue.js (+ webpack + babel) or Nuxt.js
 
 数年前にはMEANスタックなんて言葉も流行りました。
@@ -217,3 +217,91 @@ webブラウザ上で表示の切り替え、画面遷移などのコーディ�
 * Express
 * Angular.js
 * Node.js
+
+---
+
+# Reactとは
+
+---
+
+## React
+
+ReactはFacebookが公開したUI構築のためのJavaScriptライブラリ。もちろんFacebookに利用されている。
+
+特徴
+* コンポーネント指向
+* コンポーネントが保持するデータを更新すると自動的に再描画
+* VirtualDOMにより、変更があるコンポーネントだけを再描画することが可能
+* jsxという独自シンタックスを使うことにより、表示処理を簡潔に記述
+
+---
+
+## コンポーネント指向とは
+
+以前の大石さんのリーダ会議から抜粋
+
+* システムを機能（何ができるのか）によって分離する設計技法
+* コンポーネントを使用する際にはインタフェースを経由する
+* 同一インタフェースのコンポーネントは置換可能
+→コンポーネントを使いたければ、インタフェースだけを知ればよい。
+　使う対象のコンポーネントのことを知る必要さえない。
+ 　（それで想定通りに動くかどうかは別問題）
+  
+エアコンが冷房なのか暖房なのかがわからなくても、リモコンの電源ボタンを
+押すと動きます。
+（コンポーネント：冷房・暖房、インタフェース：電源ボタン）
+
+---
+
+## Reactにおけるコンポーネント指向とは
+
+すべてのコンポーネントはpropsという入力インタフェースと、render()という
+出力（画面表示）のインタフェース（というかメソッド）を持つ。
+→インタフェースの統一
+
+1つのコンポーネントにHTMLの枠組み、スタイルの指定、onClickなどの
+アクションを包括することで、コンポーネントごとに見た目と動きからなる
+最小限の機能を持たせることができる。
+→機能分離が可能
+
+---
+
+React以前のES5の記述だと1つのテキストインプットを用意するのに3ファイル必要
+
+```html
+<input id="test-text" class="short-text" type="text" value="default text" />
+```
+
+```css
+input.short-text {
+  width: 100px;
+}
+```
+
+```Javascript
+$("#test-text").on("blur", function(e){
+  if(!checkValue(e.value())) {
+    alert("ダメでーす");
+    e.value = "";
+  }
+});
+```
+
+---
+
+Reactなら1つのコンポーネントで足りる
+
+```jsx
+const testText = props => {
+  const [text, setText] = useState("default text");
+  const onBlur = (val) => {
+    if(!checkValue(val)) {
+      alert("ダメでーす");
+      setText("");
+    }
+  }
+  return <input type="text" value={text} onBlur={(e) => onBlue(e.target.value)} />
+};
+```
+
+---
