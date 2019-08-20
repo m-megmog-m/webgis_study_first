@@ -205,11 +205,11 @@ webブラウザ上で表示の切り替え、画面遷移などのコーディ�
 今の日本のJavaScript開発だと以下の組み合わせが多く採用される（と思う）。
 
 ウェブサーバ
-・Node.js + Express (+ babel)
+* Node.js + Express (+ babel)
 
 フロントエンド
-・React.js (+ webpack + babel) or create-react-app
-・Vue.js (+ webpack + babel) or Nuxt.js
+* React.js (+ webpack + babel) or create-react-app
+* Vue.js (+ webpack + babel) or Nuxt.js
 
 数年前にはMEANスタックなんて言葉も流行りました。
 
