@@ -24,9 +24,7 @@ Webブラウザ上で動作することを目的として開発されたプロ�
 
 ---
 
-<img src="javascript-image.png" style="width:100%" />
-
----
+<img src="javascript-image.png" style="height:100%" />
 
 ## 誕生
 
