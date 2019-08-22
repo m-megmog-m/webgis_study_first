@@ -1,3 +1,26 @@
+<style>
+hr {
+    page-break-after: always;
+    border: none;
+    width: 0px; 
+}
+
+h1 {
+    padding-top: 10rem;
+    text-align: center;
+}
+
+h2 {
+    padding-bottom: 0.25em;
+    border-bottom: solid 1px #999999;
+}
+
+body {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+</style>
+
 # JavaScript ~ React
 
 ---
@@ -369,7 +392,25 @@ ReactDOM.render(<Component />, document.getElementById("content"))
 
 ---
 
-# おすすめエディタVisual Studio Code
+# おすすめエディタ
+
+---
+
+[Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)
+
+Visual Studioの余計な機能を削り、コード編集・デバッギングに特化したエディタ。git操作が標準でサポートされ、プラグインによりその他の便利機能が追加できる。プラグインはユーザが開発可能なため、全世界で様々なプラグインが開発され、どんな用途でも使えるエディタとなった。
+
+---
+
+## JavaScript開発におすすめのエディタ
+
+* Japanese Language Pack
+* Beautify (syntaxハイライト)
+* prettier (code formatter)
+* ESlist (コード静的解析)
+* Gitlens (gitの便利ツール)
+* file-icons
+* Jest (Unittestフレームワーク)
 
 ---
 
