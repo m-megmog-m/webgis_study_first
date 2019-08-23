@@ -416,8 +416,6 @@ Visual Studioの余計な機能を削り、コード編集・デバッギング�
 
 # Node.jsの環境設定
 
----
-
 資料作るの力尽きたので、書きかけのQiitaを完成させました。
 そちらで説明します。
 [expressとreactで作るSPA(0) - 準備編](https://qiita.com/megmog/items/f48ecbbb30b7f1c06332)
@@ -428,8 +426,16 @@ Visual Studioの余計な機能を削り、コード編集・デバッギング�
 
 # MapboxGL.js
 
+ちょっと前に自学で作ったアプリで説明します。
+コードは [github](https://github.com/m-megmog-m/stuby-mapboxgl)
+
 ---
 
 # 宿題
+
+[Qiita記事 - React と Mapbox GL JS を使ってベクトルタイルを表示する](https://qiita.com/KamataRyo/items/f3e59d61ca19d61e31e8)
+を参考に、MIERUNE MONO、MIERUNE COLOR、OpenStreetMapの地図をそれぞれ表示してみましょう！
+
+それができたらサンプルで見せたような地図を切り替える仕組みを作ってみましょう！
 
 ---
